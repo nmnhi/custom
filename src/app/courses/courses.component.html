@@ -1,5 +1,5 @@
 <div>
-  <app-search></app-search>
+  <app-search (searchTextChanged)="onSearchTextInput($event)"></app-search>
   <app-filter
     [total]="getTotalAllCourses()"
     [free]="getTotalFreeCourses()"
@@ -7,16 +7,18 @@
     (filterRadiaButtonSelectionChanged)="onFilterRadioButtonChanged($event)"
   ></app-filter>
 </div>
+<!-- courseCountRadioButton === 'All' || course.type === courseCountRadioButton -->
 <ng-container *ngFor="let course of courses">
   <div
     class="course-container"
     *ngIf="
-      courseCountRadioButton === 'All' || course.type === courseCountRadioButton
+      searchTextData === '' ||
+      course.name.toLowerCase().includes(searchTextData)
     "
   >
     <div class="course-card">
       <div>
-        <img [src]="course.image" style="width: 220px; height: 140px" />
+        <img [src]="course.image" style="width: 230px; height: 140px" />
       </div>
       <div class="course-name">
         <h4>{{ course.name }}</h4>
@@ -33,6 +35,7 @@
         </div>
         <div class="course-price"><b>Price:</b> ${{ course.price }}</div>
       </div>
+      <div>Rating: {{ course.ratings }}</div>
       <div class="course-buttons">
         <button class="btn btn-buy">Buy Now</button>
         <button class="btn btn-show">Show Deatils</button>

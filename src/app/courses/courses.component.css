@@ -2,10 +2,11 @@
     display: inline-flex;
 }
 .course-card{
-    width:220px;
-    height: 320px;
+    width:230px;
+    height: 390px;
     margin: 30px 30px;
-    background-color: #f5f5f5;
+    /* background-color: #f5f5f5; */
+    background-color: #bbdefb;
     border-radius: 5px;
 
 }
@@ -33,7 +34,7 @@
     width: 140px;
     height: 30px;
     border: none;
-    margin: 5px 3px;
+    margin: 5px 5px;
     border-radius: 5px;
 }
 .btn-buy{

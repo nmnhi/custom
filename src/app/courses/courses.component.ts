@@ -131,6 +131,17 @@ export class CoursesComponent {
 
   onFilterRadioButtonChanged(data: string) {
     this.courseCountRadioButton = data;
+    for (let i of this.courses) {
+      if (i.type === data) {
+        i.ratings += 0.5;
+      }
+    }
     // console.log(this.courseCountRadioButton);
+  }
+  searchTextData: string = '';
+
+  onSearchTextInput(text: string) {
+    this.searchTextData = text;
+    console.log(this.searchTextData);
   }
 }
